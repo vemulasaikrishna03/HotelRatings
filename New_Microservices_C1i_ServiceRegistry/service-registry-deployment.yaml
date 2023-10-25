@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: service-registry
+spec:
+  selector:
+    matchLabels:
+      app: service-registry
+  replicas: 1
+  template:
+    metadata:
+      labels:
+        app: service-registry
+    spec:
+      containers:
+        - name: service-registry  
+          image: service-registry:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8761  
